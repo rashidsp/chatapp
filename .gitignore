@@ -13,5 +13,15 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore public
+public/system/**/*
+public/images
+public/uploads/*
+public/javascripts
+public/stylesheets
+
+# Ignore configure database
+config/database.yml
+
 # Ignore Byebug command history file.
 .byebug_history
