@@ -22,6 +22,7 @@ gem 'jquery-rails'
 # gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem 'carrierwave'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -30,9 +31,10 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+gem 'devise', github: 'plataformatec/devise', branch: 'master'
 gem 'sass', '3.4.21'
-gem 'bower-rails' 
+gem 'bower-rails'
+gem 'angular-rails-templates'
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails", "~> 4.0"

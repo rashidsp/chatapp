@@ -9,7 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   </head>
 
-  <body>
+  <body ng-app="chatApp" ng-controller="MainCtrl">
+    <%if current_user %>
+      <%= render 'layouts/search'%>
+    <%end%>
     <%= yield %>
   </body>
 </html>

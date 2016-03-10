@@ -11,10 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require angular/angular
+//= require jquery.validate.min
+//= require jquery-ui.min
+//= require search_bar
 //= require_tree .
-
-
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
