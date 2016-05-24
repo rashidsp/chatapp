@@ -32,6 +32,7 @@ class User < ApplicationRecord
     includes(:friendships).where(friendships: {is_approved: false})
   }
 
+
   def name
     "#{first_name}" +" "+ "#{last_name}"
   end
@@ -42,6 +43,17 @@ class User < ApplicationRecord
 
   def request_pending?(user)
     friends.pending_friends.include?(user)
+  end
+
+  def as_json
+    hash = super(
+        only: [
+            :id,:name,:email
+        ]
+    )
+    hash[:name] = name
+    hash[:attachment] = attachment_url
+    hash
   end
 
 end

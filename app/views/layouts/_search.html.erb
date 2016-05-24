@@ -6,7 +6,8 @@
                 <div class="panel-heading c-list">
                     <span class="title">Contacts</span>
                     <ul class="pull-right c-controls">
-                        <li><a ng-click="showAllContacts()" href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+                        <li><a id="show_contacts" ng-click="showAllContacts()" href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+                        <li><a id="hide_contacts" ng-click="hideAllContacts()" href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-minus"></i></a></li>
                         <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="fa fa-ellipsis-v"></i></a></li>
                     </ul>
                 </div>
@@ -28,7 +29,7 @@
                             <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
                         </div>
                         <a href="#" class="col-xs-12 col-sm-9">
-                            <span class="name">{{contact.name}}</span><br/>
+                            <span class="name" ng-bind="contact.name"></span><br/>
                             <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
                             <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>
                             <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>

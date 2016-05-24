@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20160309110116) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
-    t.integer  "user_conversation_id"
+    t.integer  "conversation_id"
     t.integer  "type"
     t.integer  "sender_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "messages", ["user_conversation_id", "type", "sender_id"], name: "index_messages_on_user_conversation_id_and_type_and_sender_id", using: :btree
-  add_index "messages", ["user_conversation_id"], name: "index_messages_on_user_conversation_id", using: :btree
+  add_index "messages", ["conversation_id", "sender_id"], name: "index_messages_on_conversation_id_and_sender_id", using: :btree
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
   create_table "user_conversations", force: :cascade do |t|
     t.integer  "user_id"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20160309110116) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "friendships", "users"
-  add_foreign_key "messages", "user_conversations"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "user_conversations", "conversations"
   add_foreign_key "user_conversations", "users"
 end

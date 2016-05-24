@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 	
+
   devise_for :users, controllers: {
   	sessions: 'users/sessions'
   }
   resources :home
 
 
-  resources :conversations
-
+  resources :conversations do
+    resources :messages
+  end
   root 'conversations#index'
 
   resources :users do

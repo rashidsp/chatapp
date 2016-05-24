@@ -92,3 +92,8 @@ ul.c-controls li a:hover {
 .list-group-item a {
     text-decoration: none !important;
 }
+.list-group {
+    position: absolute !important;
+    width: 95%;
+    z-index: 9999;
+}

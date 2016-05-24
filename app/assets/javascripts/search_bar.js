@@ -1,4 +1,5 @@
 $(function () {
+    $('#hide_contacts').hide();
     /* BOOTSNIPP FULLSCREEN FIX */
     if (window.location == window.parent.location) {
         $('#back-to-bootsnipp').removeClass('hide');
@@ -37,5 +38,6 @@ $(function () {
         hide: function( elem ) {
             elem.slideUp( 100 );
         }
-    })
+    });
+
 });

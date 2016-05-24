@@ -1,0 +1,26 @@
+<ul>
+  <li class="clearfix" ng-repeat="message in selected_conversation.messages">
+
+    <div ng-if="active_user.id==message.sender_id">
+      <div class="message-data">
+        <span class="message-data-name"><i class="fa fa-circle online"></i>Me</span>
+        <span class="message-data-time">{{message.created_at}}</span>
+      </div>
+      <div class="message my-message">
+        {{message.body}}
+      </div>
+    </div>
+
+    <div ng-if="active_user.id!=message.sender_id">
+      <div class="message-data align-right">
+        <span class="message-data-time" >{{message.created_at}}</span> &nbsp; &nbsp;
+        <span class="message-data-name" >{{message.sender.name}}</span> <i class="fa fa-circle me"></i>
+
+      </div>
+      <div class="message other-message float-right">
+        {{message.body}}
+      </div>
+    </div>
+  </li>
+
+</ul>
