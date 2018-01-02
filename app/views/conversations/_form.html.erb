@@ -1,6 +1,4 @@
 <form name="messageForm" ng-submit="submitMessageForm()">
-  <input id="message_conversation_id" name="message[conversation_id]" value='{{selected_conversation.conversation.id}}' type="text" ng-model="message.conversation_id = selected_conversation.conversation.id"/>
-  <textarea id="message_body" name="message[body]" placeholder ="Type your message" rows="3" ng-model="message.body"></textarea>
-  <button>Send</button>
-  <p>{{message}}</p>
+  <textarea ng-enter="submitMessageForm()" id="message_body" name="message[body]" placeholder ="Type your message" rows="3" ng-model="message.body"></textarea>
+  <button type="submit">Send</button>
 </form>

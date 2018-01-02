@@ -1,6 +1,6 @@
 var app = angular.module('chatApp', []);
 
-app.controller('MainCtrl', function($scope, $http) {
+app.controller('MainCtrl', function($scope, $http,$sce) {
     $scope.contacts;
     $scope.showAllContacts = function(keywords){
         $http({
@@ -16,6 +16,12 @@ app.controller('MainCtrl', function($scope, $http) {
         });
     }
 
+    $scope.htmlSafe = function(html) {
+        if (html){
+            text_value = html.replace(/(?:\r\n|\r|\n)/g, '<br />');
+            return $sce.trustAsHtml(text_value);
+        }
+    }
 
     $scope.hideAllContacts = function(keywords){
         $('#show_contacts').show();
@@ -64,4 +70,17 @@ app.service('shareDataService', function() {
         getList: getList
     };
 
+});
+
+app.directive('ngEnter', function() {
+    return function(scope, element, attrs) {
+        element.bind("keydown", function(e) {
+            if(e.which === 13 && !e.shiftKey) {
+                scope.$apply(function(){
+                    scope.$eval(attrs.ngEnter, {'e': e});
+                });
+                e.preventDefault();
+            }
+        });
+    };
 });

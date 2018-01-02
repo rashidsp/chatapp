@@ -10,8 +10,10 @@ app.controller('ConversationCtrl', function($scope, $http, shareDataService) {
         url: 'conversations.json',
         method: "GET"
     }).then(function successCallback(response) {
-        $scope.conversations = response.data.conversation;
+        $scope.conversations = response.data.conversations;
         $scope.active_user = response.data.user.current_user;
+        $scope.loadConversation(response.data.conversations[0]);
+        $(".chat-history").animate({scrollTop: $(".chat-history").prop('scrollHeight')}, 1000);
     }, function errorCallback(response) {
         $scope.conversations = [];
     });
@@ -33,16 +35,33 @@ app.controller('ConversationCtrl', function($scope, $http, shareDataService) {
     $scope.message = {};
     $scope.submitMessageForm = function() {
         $http({
-            url: "conversations/"+$scope.message.conversation_id+"/messages.json",
+            url: "conversations/"+$scope.selected_conversation.conversation.id+"/messages.json",
             data: $scope.message,
             method: "POST"
         }).then(function successCallback(response) {
-            $scope.selected_conversation.messages.push(response.data);
-            $(".chat-history").animate({scrollTop: $(".chat-history").prop('scrollHeight')}, 3000);
+            $scope.message = {};
         }, function errorCallback(response) {
 
         });
     };
+
+    App.chat = App.cable.subscriptions.create("ChatChannel", {
+      connected: function() {},
+      disconnected: function() {},
+      received: function(data) {
+
+        console.log($scope.selected_conversation.conversation.id)
+
+        // $scope.message = {};
+        // $scope.selected_conversation.messages.push(data);
+        // $(".chat-history").animate({scrollTop: $(".chat-history").prop('scrollHeight')}, 3000);
+      },
+      speak: function(message) {
+        return this.perform('speak', {
+          message: message
+        });
+      }
+});
 
 
 });

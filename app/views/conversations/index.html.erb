@@ -1,11 +1,11 @@
   <div class="container clearfix" ng-controller="ConversationCtrl">
     <% if user_signed_in? %>
       <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-      <%= link_to('Login', new_user_session_path)  %>  
+        <%= link_to('Login', new_user_session_path)  %>
       </li>
     <% end %>
     <div class="people-list" id="people-list">
@@ -24,7 +24,7 @@
     </div>
     
     <div class="chat">
-      <div class="chat-header clearfix" ng-controller="ConversationCtrl">
+      <div class="chat-header clearfix">
         <%= render "chat_header"%>
       </div>
       <div class="chat-history">
@@ -39,26 +39,3 @@
     
   </div> <!-- end container -->
 
-<script id="message-template" type="text/x-handlebars-template">
-  <li class="clearfix">
-    <div class="message-data align-right">
-      <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
-      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-    </div>
-    <div class="message other-message float-right">
-      {{messageOutput}}
-    </div>
-  </li>
-</script>
-
-<script id="message-response-template" type="text/x-handlebars-template">
-  <li>
-    <div class="message-data">
-      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-      <span class="message-data-time">{{time}}, Today</span>
-    </div>
-    <div class="message my-message">
-      {{response}}
-    </div>
-  </li>
-</script>
